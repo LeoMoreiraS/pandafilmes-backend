@@ -25,7 +25,7 @@ export class GetVideosService implements IGetVideosService {
     videos.forEach((video) => {
       response.push({
         id: video,
-        title: video.replace(".mp4", "").replaceAll("_", " "),
+        title: video.replace(".mp4", "").replace(/_/g, " "),
       });
     });
 
