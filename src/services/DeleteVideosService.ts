@@ -18,11 +18,9 @@ export class DeleteVideosService implements IDeleteVideosService {
 
   execute(filename: string) {
     const filePath = path.resolve("videos", filename);
-
-    const fileBusy = fs.statSync(filePath);
-    console.log(fileBusy);
+        
     const fileExists = fs.existsSync(filePath);
-    console.log(fileExists)
+    
 
     if (!fileExists) {
       throw new Error("No such file");
