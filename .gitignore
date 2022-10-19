@@ -1,5 +1,5 @@
 videos/*.mp4
-
+myDataBase.json
 # Logs
 logs
 *.log
