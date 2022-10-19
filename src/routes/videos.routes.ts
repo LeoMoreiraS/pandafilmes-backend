@@ -41,7 +41,7 @@ videosRoutes.get(
 
 videosRoutes.post(
   "/upload",
-  videoStorage.single("video"),
+  videoStorage.fields([{name:"video",maxCount:1},{name:"jpeg",maxCount:1}]),
   uploadVideosController.handle
 );
 
