@@ -5,11 +5,13 @@ import { GetVideosController } from "../controllers/GetVideosController";
 import { StreamVideoController } from "../controllers/StreamVideoController";
 import { videoStorage } from "../config/multer.config";
 import { UploadVideosController } from "../controllers/UploadVideosController";
+import { DeleteVideosController } from "../controllers/DeleteVideosController";
 
 export const videosRoutes = Router();
 const getVideosController = new GetVideosController();
 const streamVideoController = new StreamVideoController();
 const uploadVideosController = new UploadVideosController();
+const deleteVideosController = new DeleteVideosController();
 
 videosRoutes.get("/videos", getVideosController.handle);
 
@@ -42,3 +44,5 @@ videosRoutes.post(
   videoStorage.single("video"),
   uploadVideosController.handle
 );
+
+videosRoutes.get("/delete/:filename", deleteVideosController.handle)
