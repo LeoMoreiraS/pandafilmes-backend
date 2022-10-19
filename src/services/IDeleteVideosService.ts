@@ -1,4 +1,3 @@
-
 export interface IDeleteVideosService {
-  execute(filename:string):void;
+  execute(filename: string): void;
 }

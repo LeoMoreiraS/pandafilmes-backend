@@ -1,4 +1,3 @@
-
 import path from "path";
 import fs from "fs";
 import { IUploadVideosService } from "./IUploadVideosService";
@@ -17,7 +16,7 @@ export class UploadVideosService implements IUploadVideosService {
     }
   }
 
-  execute(file:Express.Multer.File) {
+  execute(file: Express.Multer.File) {
     if (!file) {
       throw new Error("Empty file passed to uploadVideos");
     }
