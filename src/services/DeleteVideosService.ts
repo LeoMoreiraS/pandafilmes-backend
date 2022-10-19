@@ -29,5 +29,6 @@ export class DeleteVideosService implements IDeleteVideosService {
     }
     fs.unwatchFile(filePath);
     fs.unlinkSync(filePath);
+    fs.unlinkSync(filePath.replace('.mp4','.jpg'))
   }
 }
