@@ -1,14 +1,13 @@
 import { Router, Request, Response } from "express";
 import path from 'path';
 import fs from 'fs';
-export const videosRoutes =  Router();
-
 import { JsonDB, Config } from 'node-json-db';
 import { GetVideosController } from "../controllers/GetVideosController";
 import { StreamVideoController } from "../controllers/StreamVideoController";
 import { videoStorage } from "../config/multer.config";
 
 
+export const videosRoutes =  Router();
 const getVideosController = new GetVideosController();
 const streamVideoController = new StreamVideoController();
 

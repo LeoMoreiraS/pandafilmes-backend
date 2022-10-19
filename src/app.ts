@@ -1,6 +1,7 @@
-import express from 'express'
-import cors from 'cors';
-import { videosRoutes } from './routes/videos.routes';
+import express from "express";
+import cors from "cors";
+import { videosRoutes } from "./routes/videos.routes";
+
 export const app = express();
 
 app.use(cors());
