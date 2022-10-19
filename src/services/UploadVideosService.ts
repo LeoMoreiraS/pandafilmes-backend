@@ -25,7 +25,7 @@ export class UploadVideosService implements IUploadVideosService {
       throw new Error("Invalid format passed to uploadVideos");
     }
     
-    fs.renameSync(file.path, path.resolve("videos", file.originalname.replaceAll(" ", "_")))
+    fs.renameSync(file.path, path.resolve("videos", file.originalname.replace(" ", "_")))
     
   }
 }

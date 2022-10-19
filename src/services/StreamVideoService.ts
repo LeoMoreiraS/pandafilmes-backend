@@ -38,7 +38,7 @@ export class StreamVideoService implements IStreamVideoService {
       };
       const file = fs.createReadStream(path, { start, end });
       response.writeHead(206, head);
-      file.pipe(response).on("close",()=>{ file.destroy;});
+      file.pipe(response).on('close', ()=>{file.destroy()}).on('end', ()=>{file.destroy()});
     } else {
       const head = {
         "Content-Length": fileSize,
@@ -46,7 +46,7 @@ export class StreamVideoService implements IStreamVideoService {
       };
       response.writeHead(200, head);
       const stream = fs.createReadStream(path)
-      stream.pipe(response).on("close",()=>{ stream.destroy;});
+      stream.pipe(response).on('close', ()=>{stream.destroy()}).on('end', ()=>{stream.destroy()});
     }
   }
 }
