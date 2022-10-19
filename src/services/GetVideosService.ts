@@ -17,8 +17,10 @@ export class GetVideosService implements IGetVideosService {
   }
 
   execute(): Movie[] {
-    const videos = fs.readdirSync(path.resolve("videos"));
+    let videos = fs.readdirSync(path.resolve("videos"));
     videos.shift();
+
+    videos = videos.filter(video=> {if(path.extname(video)==='.mp4')return video});
 
     const response: Movie[] = [];
 
@@ -26,6 +28,7 @@ export class GetVideosService implements IGetVideosService {
       response.push({
         id: video,
         title: video.replace(".mp4", "").replace(/_/g, " "),
+        image: video.replace(".mp4",".jpg")
       });
     });
 
