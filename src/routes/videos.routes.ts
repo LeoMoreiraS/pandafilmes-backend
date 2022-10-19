@@ -45,4 +45,4 @@ videosRoutes.post(
   uploadVideosController.handle
 );
 
-videosRoutes.get("/delete/:filename", deleteVideosController.handle)
+videosRoutes.delete("/delete/:filename", deleteVideosController.handle)

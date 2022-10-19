@@ -3,11 +3,11 @@ import fs from "fs";
 import { IDeleteVideosService } from "./IDeleteVideosService";
 
 export class DeleteVideosService implements IDeleteVideosService {
-  private static instance: DeleteVideosService;
+  private static instance: IDeleteVideosService;
 
   private constructor() {}
 
-  public static getInstance(): DeleteVideosService {
+  public static getInstance(): IDeleteVideosService {
     if (!this.instance) {
       this.instance = new DeleteVideosService();
       return this.instance;

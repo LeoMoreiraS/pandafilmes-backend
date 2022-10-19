@@ -3,11 +3,11 @@ import path from "path";
 import fs from "fs";
 
 export class GetVideosService implements IGetVideosService {
-  private static instance: GetVideosService;
+  private static instance: IGetVideosService;
 
   private constructor() {}
 
-  public static getInstance(): GetVideosService {
+  public static getInstance(): IGetVideosService {
     if (!this.instance) {
       this.instance = new GetVideosService();
       return this.instance;
@@ -25,7 +25,7 @@ export class GetVideosService implements IGetVideosService {
     videos.forEach((video) => {
       response.push({
         id: video,
-        title: video.replace(".mp4", ""),
+        title: video.replace(".mp4", "").replaceAll("_", " "),
       });
     });
 

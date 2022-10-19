@@ -4,11 +4,11 @@ import fs from "fs";
 import { IUploadVideosService } from "./IUploadVideosService";
 
 export class UploadVideosService implements IUploadVideosService {
-  private static instance: UploadVideosService;
+  private static instance: IUploadVideosService;
 
   private constructor() {}
-
-  public static getInstance(): UploadVideosService {
+  
+  public static getInstance(): IUploadVideosService {
     if (!this.instance) {
       this.instance = new UploadVideosService();
       return this.instance;
@@ -26,7 +26,7 @@ export class UploadVideosService implements IUploadVideosService {
       throw new Error("Invalid format passed to uploadVideos");
     }
     
-    fs.renameSync(file.path, path.resolve("videos", file.originalname))
+    fs.renameSync(file.path, path.resolve("videos", file.originalname.replaceAll(" ", "_")))
     
   }
 }

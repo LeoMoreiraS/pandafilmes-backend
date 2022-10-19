@@ -3,11 +3,11 @@ import { Request, Response } from "express";
 import fs from "fs";
 
 export class StreamVideoService implements IStreamVideoService {
-  private static instance: StreamVideoService;
+  private static instance: IStreamVideoService;
 
   private constructor() {}
 
-  public static getInstance(): StreamVideoService {
+  public static getInstance(): IStreamVideoService {
     if (!this.instance) {
       this.instance = new StreamVideoService();
       return this.instance;
