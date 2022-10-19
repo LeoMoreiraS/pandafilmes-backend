@@ -1,3 +1,8 @@
+export interface Movie {
+  id: string;
+  title: string;
+}
+
 export interface IGetVideosService {
-  execute(): string[];
+  execute(): Movie[];
 }
