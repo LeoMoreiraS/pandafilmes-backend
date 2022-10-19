@@ -16,17 +16,15 @@ export class DeleteVideosService implements IDeleteVideosService {
     }
   }
 
-  execute(filename:string){
-
+  execute(filename: string) {
     const filePath = path.resolve("videos", filename);
-    
+
     const fileExists = fs.existsSync(filePath);
 
-    if(!fileExists) {
-        throw new Error("No such file");
+    if (!fileExists) {
+      throw new Error("No such file");
     }
-    
-    fs.rmSync(filePath);
 
+    fs.rmSync(filePath);
   }
 }

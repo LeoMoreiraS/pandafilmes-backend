@@ -1,4 +1,3 @@
-
 import path from "path";
 import fs from "fs";
 import { IUploadVideosService } from "./IUploadVideosService";
@@ -17,7 +16,7 @@ export class UploadVideosService implements IUploadVideosService {
     }
   }
 
-  execute(file:Express.Multer.File) {
+  execute(file: Express.Multer.File) {
     if (!file) {
       throw new Error("Empty file passed to uploadVideos");
     }
@@ -25,8 +24,7 @@ export class UploadVideosService implements IUploadVideosService {
     if (path.extname(file.originalname) !== ".mp4") {
       throw new Error("Invalid format passed to uploadVideos");
     }
-    
-    fs.renameSync(file.path, path.resolve("videos", file.originalname))
-    
+
+    fs.renameSync(file.path, path.resolve("videos", file.originalname));
   }
 }
