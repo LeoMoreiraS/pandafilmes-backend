@@ -1,4 +1,4 @@
-import { IGetVideosService, Movie } from "./IGetVideosService";
+import { IGetVideosService, Video } from "./IGetVideosService";
 import path from "path";
 import fs from "fs";
 
@@ -16,19 +16,21 @@ export class GetVideosService implements IGetVideosService {
     }
   }
 
-  execute(): Movie[] {
+  execute(): Video[] {
     let videos = fs.readdirSync(path.resolve("videos"));
     videos.shift();
 
-    videos = videos.filter(video=> {if(path.extname(video)==='.mp4')return video});
+    videos = videos.filter((video) => {
+      if (path.extname(video) === ".mp4") return video;
+    });
 
-    const response: Movie[] = [];
+    const response: Video[] = [];
 
     videos.forEach((video) => {
       response.push({
         id: video,
         title: video.replace(".mp4", "").replace(/_/g, " "),
-        image: video.replace(".mp4",".jpg")
+        image: video.replace(".mp4", ".jpg"),
       });
     });
 
