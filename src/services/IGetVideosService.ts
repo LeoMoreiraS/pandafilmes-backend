@@ -1,4 +1,3 @@
-
-export interface IGetVideosService{
-    execute():string[];
+export interface IGetVideosService {
+  execute(): string[];
 }
