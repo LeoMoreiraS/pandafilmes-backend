@@ -24,14 +24,14 @@ describe('Upload Videos Service Test', () => {
     })
 
     it("Should not upload a empty video",()=>{
-        const fakeFile:Express.Multer.File = {} as Express.Multer.File;
-
+        let fakeFile:any =  null;
+        
         try{
             uploadVideosService.execute(fakeFile);
             expect(true).toBeFalsy();
         }catch(error){
             if(error instanceof Error){
-                expect(error.message).toBe("Invalid format passed to uploadVideos");
+                expect(error.message).toBe("Empty file passed to uploadVideos");
             }else{
                 expect(true).toBeFalsy();
             }

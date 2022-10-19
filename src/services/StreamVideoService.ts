@@ -38,14 +38,15 @@ export class StreamVideoService implements IStreamVideoService {
       };
       const file = fs.createReadStream(path, { start, end });
       response.writeHead(206, head);
-      file.pipe(response);
+      file.pipe(response).on("close",()=>{ file.destroy;});
     } else {
       const head = {
         "Content-Length": fileSize,
         "Content-Type": "video/mp4",
       };
       response.writeHead(200, head);
-      fs.createReadStream(path).pipe(response);
+      const stream = fs.createReadStream(path)
+      stream.pipe(response).on("close",()=>{ stream.destroy;});
     }
   }
 }
