@@ -1,10 +1,12 @@
 import { Router, Request, Response } from "express";
 import path from 'path';
+import fs from 'fs';
 export const videosRoutes =  Router();
 
 import { JsonDB, Config } from 'node-json-db';
 import { GetVideosController } from "../controllers/GetVideosController";
 import { StreamVideoController } from "../controllers/StreamVideoController";
+import { videoStorage } from "../config/multer.config";
 
 
 const getVideosController = new GetVideosController();
@@ -33,3 +35,17 @@ videosRoutes.get("/video-test/:id",async (request:Request,response:Response)=>{
 
     response.sendFile('videos/video.mp4',{root:path.resolve()});
 });
+
+videosRoutes.post("/upload", videoStorage.single('video'), async (request:Request,response:Response)=>{
+        const file = request.file;
+        console.log(request.file)
+        if(!file){
+            return response.status(400).send();
+        }
+
+        if(path.extname(file.originalname) !== '.mp4'){
+            return response.status(400).send();
+        }
+        console.log(fs.renameSync( file.path , path.resolve("videos", file.originalname)));
+
+})

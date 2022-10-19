@@ -1,4 +1,6 @@
 videos/*.mp4
+temp/**
+!temp/.gitkeep
 myDataBase.json
 # Logs
 logs
