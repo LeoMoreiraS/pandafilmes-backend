@@ -17,7 +17,7 @@ export class StreamVideoService implements IStreamVideoService {
   }
 
   execute(request: Request, response: Response) {
-    const path = `videos/${request.params.id}.mp4`;
+    const path = `videos/${request.params.id}`;
 
     const videoRange = request.headers.range;
 
