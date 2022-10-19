@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-
 import { GetVideosService } from "../services/GetVideosService";
 
 export class GetVideosController {
