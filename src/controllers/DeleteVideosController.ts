@@ -17,6 +17,6 @@ export class DeleteVideosController {
         return response.status(400).json(message);
     }
 
-    return response.status(204);
+    return response.status(204).send();
   }
 }
