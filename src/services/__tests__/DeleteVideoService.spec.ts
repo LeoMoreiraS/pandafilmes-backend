@@ -6,8 +6,8 @@ describe("Delete Videos Service Test", () => {
   const deleteVideosService = DeleteVideosService.getInstance();
 
   it("Should create only 1 instance of the service", () => {
-    const uploadVideosService2 = DeleteVideosService.getInstance();
-    expect(deleteVideosService).toBe(uploadVideosService2);
+    const deleteVideosService2 = DeleteVideosService.getInstance();
+    expect(deleteVideosService).toBe(deleteVideosService2);
   });
 
   it("Should not try to delete a file that does not exist", () => {
